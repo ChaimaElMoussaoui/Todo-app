@@ -54,6 +54,11 @@ img {
     height: 100px;
 }
 
+.todo-list {
+    list-style-type: none;
+    padding: 0;
+}
+
 .wrapper {
     width: 700px;
     max-width: 100%;
@@ -103,6 +108,7 @@ form {
     justify-content: space-around;
     margin-bottom: 20px;
 }
+
 
 .filter-button {
     background: none;
@@ -170,7 +176,19 @@ form {
 .delete-button:hover svg {
     fill: #02d3b0;
 }
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
 
+.todo.removing {
+    animation: fadeOut 0.5s forwards;
+}
 .custom-checkbox {
     border: 2px solid var(--accent-color);
     border-radius: 50%;
