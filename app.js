@@ -72,3 +72,31 @@ function getTodos(){
     const todos = localStorage.getItem("todos") || "[]";
     return JSON.parse(todos);
 }
+
+document.getElementById('filter-all').addEventListener('click', () => {
+    filterTodos('all');
+});
+
+document.getElementById('filter-complete').addEventListener('click', () => {    
+    filterTodos('complete');
+});
+
+document.getElementById('filter-uncomplete').addEventListener('click', () => {
+    filterTodos('uncomplete');
+});
+
+function filterTodos(filter) {
+    const todos = document.querySelectorAll('.todo');
+    todos.forEach(todo => {
+        const isChecked = todo.querySelector('input[type="checkbox"]').checked;
+        if (filter === 'all') {
+            todo.style.display = 'flex';
+        } else if (filter === 'complete' && isChecked) {
+            todo.style.display = 'flex';
+        } else if (filter === 'uncomplete' && !isChecked) {
+            todo.style.display = 'flex';
+        } else {
+            todo.style.display = 'none';
+        }
+    });
+}

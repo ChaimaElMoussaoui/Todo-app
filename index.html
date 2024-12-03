@@ -6,51 +6,78 @@
     <title>Todo App</title>
     <link rel="icon" type="image/png" href="../images/favicon.png">
     <link rel="stylesheet" href="style.css">
-  
 </head>
 <body>
-    <h1> <img src="../img/image.png"> Todo App</h1>
-    <div class="wrapper">
-        <form>
-            <input id="todo-input" type="text" 
-            placeholder="write anything and hit enter to add" autocomplete="off">
-            <button id="add-button">ADD</button>
-        </form>
-        <ul id="todo-list">
-         <li class="todo">
-                <input type="checkbox" id="todo-1">
-                <label class="custom-checkbox" for="todo-1">
-                    <svg fill="transparent" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-                        <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
+
+    <header>
+        <h1><img src="../img/image.png" alt="Logo"> Todo App</h1>
+    </header>
+
+    <main>
+        <section class="wrapper">
+            <form>
+                <input id="todo-input" type="text" placeholder="write anything and hit enter to add" autocomplete="off">
+                <button id="add-button" type="button">ADD</button>
+            </form>
+            <div class="filter-buttons">
+                <button id="filter-all" class="filter-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path d="M80-160v-160h160v160H80Zm240 0v-160h560v160H320ZM80-400v-160h160v160H80Zm240 0v-160h560v160H320ZM80-640v-160h160v160H80Zm240 0v-160h560v160H320Z"/>
                     </svg>
-                </label>
-                <label for="todo-1" class="todo-text">
-                   VR-cafe
-                </label>
-                <button class="delete-button">
-                    <svg fill="var(--secondary-color)" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-                        <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
-                    </svg>
+                    All
                 </button>
-            </li>
-            <li class="todo">
-                <input type="checkbox" id="todo-2">
-                <label class="custom-checkbox" for="todo-2">
-                    <svg fill="transparent" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-                        <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
+                <button id="filter-complete" class="filter-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path d="M222-200 80-342l56-56 85 85 170-170 56 57-225 226Zm0-320L80-662l56-56 85 85 170-170 56 57-225 226Zm298 240v-80h360v80H520Zm0-320v-80h360v80H520Z"/>
                     </svg>
-                </label>
-                <label for="todo-2" class="todo-text">
-                   VR-cafe
-                </label>
-                <button class="delete-button">
-                    <svg fill="var(--secondary-color)" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-                        <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
-                    </svg>
+                    Complete
                 </button>
-            </li> 
-        </ul>
-    </div>
+                <button id="filter-uncomplete" class="filter-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                        <path d="M640-120q-33 0-56.5-23.5T560-200v-160q0-33 23.5-56.5T640-440h160q33 0 56.5 23.5T880-360v160q0 33-23.5 56.5T800-120H640Zm0-80h160v-160H640v160ZM80-240v-80h360v80H80Zm560-280q-33 0-56.5-23.5T560-600v-160q0-33 23.5-56.5T640-840h160q33 0 56.5 23.5T880-760v160q0 33-23.5 56.5T800-520H640Zm0-80h160v-160H640v160ZM80-640v-80h360v80H80Zm640 360Zm0-400Z"/>
+                    </svg>
+                    Uncomplete
+                </button>
+            </div>
+            <ul id="todo-list">
+                <li class="todo">
+                    <input type="checkbox" id="todo-1">
+                    <label class="custom-checkbox" for="todo-1">
+                        <svg fill="transparent" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                            <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
+                        </svg>
+                    </label>
+                    <label for="todo-1" class="todo-text">VR-cafe</label>
+                    <button class="delete-button">
+                        <svg fill="var(--secondary-color)" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                            <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
+                        </svg>
+                    </button>
+                </li>
+                <li class="todo">
+                    <input type="checkbox" id="todo-2">
+                    <label class="custom-checkbox" for="todo-2">
+                        <svg fill="transparent" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                            <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
+                        </svg>
+                    </label>
+                    <label for="todo-2" class="todo-text">VR-cafe</label>
+                    <button class="delete-button">
+                        <svg fill="var(--secondary-color)" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                            <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <small>
+          Copyright © 2023 Football History Archives. All Rights Reserved.
+        </small>
+      </footer>
+    
     <script src="app.js" defer></script>
 </body>
 </html>
