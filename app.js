@@ -82,15 +82,6 @@ function createTodoElement(todo, index) {
     todoText.classList.add('todo-text');
     todoText.textContent = todo.text;
 
-    // **Nieuw: Voeg categorie toe**
-    const categorySpan = document.createElement('span');
-    categorySpan.classList.add('todo-category');
-    categorySpan.textContent = ` (${todo.category})`;
-    categorySpan.style.marginLeft = '10px';
-    categorySpan.style.fontStyle = 'italic';
-    categorySpan.style.backgroundColor = getCategoryColor(todo.category);
-    categorySpan.style.borderColor = getCategoryColor(todo.category);
-
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('delete-button');
     deleteButton.innerHTML = `
@@ -106,7 +97,6 @@ function createTodoElement(todo, index) {
     todoLI.appendChild(checkbox);
     todoLI.appendChild(customCheckbox);
     todoLI.appendChild(todoText);
-    todoLI.appendChild(categorySpan); // Voeg de categorie toe
     todoLI.appendChild(deleteButton);
 
     return todoLI;
@@ -123,14 +113,9 @@ function deleteTodoItem(todoIndex) {
 }
 
 function saveTodos() {
-    localStorage.setItem('todos', JSON.stringify(allTodos));
-}
-
-function loadTodos() {
-    const savedTodos = JSON.parse(localStorage.getItem('todos'));
-    if (savedTodos) {
-        allTodos = savedTodos;
-    }
+    const todosJson = JSON.stringify(allTodos);
+    localStorage.setItem('todos', todosJson);
+    console.log('Todos saved:', todosJson);
 }
 
 function getTodos() {
@@ -176,43 +161,27 @@ function filterByCategory(category) {
     updateTodoList();
 }
 
+let darkmode = localStorage.getItem('darkmode')
+const themeSwitch = document.getElementById('theme-switch')
 
-const toggleButton = document.getElementById('toggle-theme');
-toggleButton.addEventListener('click', () => {
-    const isDarkMode = document.body.classList.toggle('darkMode');
-    localStorage.setItem('darkMode', isDarkMode);
-});
-
-function renderTheme() {
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
-    if (isDarkMode) {
-        document.body.classList.add('darkMode');
-    }
+const enableDarkmode = () => {
+  document.body.classList.add('darkmode')
+  localStorage.setItem('darkmode', 'active')
 }
 
-renderTheme();
+const disableDarkmode = () => {
+  document.body.classList.remove('darkmode')
+  localStorage.setItem('darkmode', null)
+}
+
+if(darkmode === "active") enableDarkmode()
+
+themeSwitch.addEventListener("click", () => {
+  darkmode = localStorage.getItem('darkmode')
+  darkmode !== "active" ? enableDarkmode() : disableDarkmode()
+})
 
 
-let allTodos = [];
 
+let allTodos = getTodos();
 updateTodoList();
-
-const toggleThemeButton = document.getElementById('toggle-theme');
-toggleThemeButton.addEventListener('click', () => {
-    document.body.classList.toggle('darkMode');
-});
-
-function getCategoryColor(category) {
-    switch (category) {
-        case 'work':
-            return 'blue';
-        case 'personal':
-            return 'green';
-        case 'shopping':
-            return 'orange';
-        case 'others':
-            return 'gray';
-        default:
-            return 'black';
-    }
-}

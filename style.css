@@ -6,24 +6,24 @@
     --primary-color: #5a048b;
     --secondary-color: #eb04cc;
     --hover-color: #02d3b0;
-    --accent-color: #ffd900;
+    --accent-color: #eb04cc;
     --text-color: #ffffff;
     --text-color2: #000000;
     --input-text-color: #000;
-    --badge-color: #fff;
+    --base-variant: #e8e9ed;
+
 }
 
-.darkMode {
+.darkmode {
     --background: #252525;
     --text: #ffffff;
     --primary-color: #ffd900;
     --secondary-color: #02d3b0;
     --hover-color: #eb04cc;
     --accent-color: #5a048b;
-    --text-color: #ffffff;
     --text-color2: #ffffff;
     --input-text-color: #fff;
-    --badge-color: #000;
+
 }
 
 
@@ -49,9 +49,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: var(--background);
-  
 }
-
 
 main {
     flex: 1;
@@ -60,7 +58,6 @@ main {
     flex-direction: column;
     align-items: center;
     color: var(--text);
-   
 }
 
 h1 {
@@ -83,8 +80,48 @@ h1 {
 img {
     width: 200px;
     height: 100px;
-   
 }
+
+/*dark mode switch*/
+#theme-switch {
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--base-variant);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+#theme-switch svg {
+    fill: var(--primary-color);
+}
+
+#theme-switch svg:last-child {
+    display: none;
+}
+
+.darkmode #theme-switch svg:first-child {
+    display: none;
+}
+
+.darkmode #theme-switch svg:last-child {
+    display: block;
+}
+
+/* Wrapper container styles */
+.wrapper-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    padding: 20px;
+}
+
+
 
 
 .todo-list {
@@ -103,32 +140,15 @@ img {
 }
 
 #todo-input {
-    box-sizing: border-box;
+    flex-grow: 1;
+ 
     padding: 12px 20px;
-    width: 100%;
     background: none;
     border: none;
     color: var(--input-text-color);
+    border-radius: 1000px;
 }
 
-@media(max-width: 500px) {
-    html {
-        font-size: 12pt;
-    }
-
-    #add-button {
-        position: unset;
-        width: 100%;
-        margin-top: 10px;
-        padding: 15px;
-        height: auto;
-    }
-
-    h1 {
-        margin-top: 50px;
-        font-size: 15vw;
-    }
-}
 
 #todo-input:focus {
     outline: none;
@@ -138,12 +158,10 @@ form {
     position: relative;
 }
 
-
 /*filter buttons*/
 .filter-buttons {
     display: flex;
     justify-content: space-around;
-    
 }
 
 .filter-button {
@@ -153,9 +171,9 @@ form {
     padding: 20px;
     cursor: pointer;
     transition: transform 0.3s ease;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .filter-button:hover {
@@ -168,43 +186,42 @@ form {
 
 .filter-button a {
     color: var(--text-color2);
-    text-align: center; /
-}
-#toggle-theme  {
-    background: var(--background);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-#toggle-theme svg {
-    fill: var(--secondary-color);
+    text-align: center;
 }
 
-/*add button*/
+.search-form {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--secondary-color);
+    border-radius: 1000px;
+    width: 100%;
+}
+
 #add-button {
-    position: absolute;
-    top: 0;
-    right: 0;
     background-color: var(--secondary-color);
-    height: 100%;
-    padding: 0 30px;
+    height: 40px;
+    width: 40px;
     border: none;
-    border-top-right-radius: 1000px; 
-    border-bottom-right-radius: 1000px; 
+    border-radius: 1000px;
     font: inherit;
-    font-weight: 300;
     color: var(--text);
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+#add-button svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--text);
 }
 
 #add-button:hover {
     background-color: var(--hover-color);
 }
 
-
-/*todo*/
 .todo {
     margin-bottom: 10px;
     padding: 0 16px;
@@ -212,18 +229,18 @@ form {
     border-radius: 15px;
     display: flex;
     align-items: center;
-    transition: transform 0.3s ease; 
+    transition: transform 0.3s ease;
 }
 
 .todo:hover {
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
+
 .todo .todo-text {
     padding: 15px;
     padding-right: 0;
     flex-grow: 1;
     transition: 200ms ease;
-
 }
 
 .delete-button {
@@ -282,76 +299,26 @@ input[type="checkbox"]:checked~.custom-checkbox svg {
 
 input[type="checkbox"]:checked~.todo-text {
     text-decoration: line-through;
-    color: #02d3b0;
+    color: var(--hover-color);
 }
 
 input[type="checkbox"] {
     display: none;
 }
 
-@media(max-width: 500px) {
-    html {
-        font-size: 12pt;
-    }
-
-    #add-button {
-        position: unset;
-        width: 100%;
-        margin-top: 10px;
-        padding: 15px;
-        height: auto;
-    }
-
-    h1 {
-        margin-top: 50px;
-        font-size: 15vw;
-    }
-}
-
 footer {
     padding: 10px;
     background-color: var(--primary-color);
-    color: var(--accent-color);
-    text-align: center;
-    width: 100%;
-}
-
-select {
-    padding: 10px;
-    border: 2px solid var(--secondary-color);
-    border-radius: 1000px;
-    background: none;
-    color: var(--input-text-color);
-    font: inherit;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-select:focus {
-    outline: none;
-    border-color: var(--hover-color);
-}
-
-
-.search__buttons {
-    display: flex;
-
-}
-
-.search-form {
-    display: flex;
-    border: 2px solid var(--secondary-color);
-    border-radius: 1000px;
-}
-
-
-.todo-category {
-    padding: 8px;
-    border: 2px solid currentColor;
-    border-radius: 1000px;
-    background: currentColor;
     color: var(--text-color2);
-    font: inherit;
-    margin-right: 10px;
-    cursor: pointer;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+footer a {
+    color: var(--text-color2);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
