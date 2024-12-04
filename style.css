@@ -1,15 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 :root {
     --background: #ffffff;
+    --text: #ffffff;
     --primary-color: #5a048b;
     --secondary-color: #eb04cc;
+    --hover-color: #02d3b0;
     --accent-color: #ffd900;
     --text-color: #ffffff;
+    --text-color2: #000000;
+    --input-text-color: #000;
+    --badge-color: #fff;
 }
+
+.darkMode {
+    --background: #252525;
+    --text: #ffffff;
+    --primary-color: #ffd900;
+    --secondary-color: #02d3b0;
+    --hover-color: #eb04cc;
+    --accent-color: #5a048b;
+    --text-color: #ffffff;
+    --text-color2: #ffffff;
+    --input-text-color: #fff;
+    --badge-color: #000;
+}
+
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: MyCustomFont;
 }
 
 @font-face {
@@ -26,7 +48,8 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    font-family: 'MyCustomFont', sans-serif;
+    background-color: var(--background);
+  
 }
 
 
@@ -36,7 +59,8 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: white;
+    color: var(--text);
+   
 }
 
 h1 {
@@ -46,13 +70,22 @@ h1 {
     font-weight: 800;
     text-transform: uppercase;
     text-align: center;
-    color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
 img {
     width: 200px;
     height: 100px;
+   
 }
+
 
 .todo-list {
     list-style-type: none;
@@ -60,11 +93,13 @@ img {
 }
 
 .wrapper {
-    width: 700px;
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    background-color: var(--background);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    margin: 5px auto;
+    max-width: 500px;
+    width: 100%;
 }
 
 #todo-input {
@@ -72,8 +107,8 @@ img {
     padding: 12px 20px;
     width: 100%;
     background: none;
-    border: 2px solid var(--secondary-color);
-    border-radius: 1000px;
+    border: none;
+    color: var(--input-text-color);
 }
 
 @media(max-width: 500px) {
@@ -103,46 +138,73 @@ form {
     position: relative;
 }
 
+
+/*filter buttons*/
 .filter-buttons {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 20px;
+    
 }
 
-
 .filter-button {
-    background: none;
+    background-color: var(--button-background);
+    color: var(--button-text);
     border: none;
+    padding: 20px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    transition: transform 0.3s ease;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.filter-button:hover {
+    transform: scale(1.2);
 }
 
 .filter-button svg {
     fill: var(--secondary-color);
 }
 
+.filter-button a {
+    color: var(--text-color2);
+    text-align: center; /
+}
+#toggle-theme  {
+    background: var(--background);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+#toggle-theme svg {
+    fill: var(--secondary-color);
+}
+
+/*add button*/
 #add-button {
     position: absolute;
     top: 0;
     right: 0;
-
-    background-color: var(--accent-color);
+    background-color: var(--secondary-color);
     height: 100%;
     padding: 0 30px;
     border: none;
-    border-radius: 1000px;
+    border-top-right-radius: 1000px; 
+    border-bottom-right-radius: 1000px; 
     font: inherit;
-    font-weight: 600;
-    color: var(--background);
+    font-weight: 300;
+    color: var(--text);
     cursor: pointer;
 }
 
 #add-button:hover {
-    background-color: #02d3b0;
+    background-color: var(--hover-color);
 }
 
+
+/*todo*/
 .todo {
     margin-bottom: 10px;
     padding: 0 16px;
@@ -150,13 +212,18 @@ form {
     border-radius: 15px;
     display: flex;
     align-items: center;
+    transition: transform 0.3s ease; 
 }
 
+.todo:hover {
+    transform: scale(1.05); 
+}
 .todo .todo-text {
     padding: 15px;
     padding-right: 0;
     flex-grow: 1;
     transition: 200ms ease;
+
 }
 
 .delete-button {
@@ -174,12 +241,14 @@ form {
 }
 
 .delete-button:hover svg {
-    fill: #02d3b0;
+    fill: var(--hover-color);
 }
+
 @keyframes fadeOut {
     from {
         opacity: 1;
     }
+
     to {
         opacity: 0;
         transform: translateX(-100%);
@@ -187,8 +256,9 @@ form {
 }
 
 .todo.removing {
-    animation: fadeOut 0.5s forwards;
+    animation: fadeOut 0.3s forwards;
 }
+
 .custom-checkbox {
     border: 2px solid var(--accent-color);
     border-radius: 50%;
@@ -244,4 +314,44 @@ footer {
     color: var(--accent-color);
     text-align: center;
     width: 100%;
+}
+
+select {
+    padding: 10px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 1000px;
+    background: none;
+    color: var(--input-text-color);
+    font: inherit;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--hover-color);
+}
+
+
+.search__buttons {
+    display: flex;
+
+}
+
+.search-form {
+    display: flex;
+    border: 2px solid var(--secondary-color);
+    border-radius: 1000px;
+}
+
+
+.todo-category {
+    padding: 8px;
+    border: 2px solid currentColor;
+    border-radius: 1000px;
+    background: currentColor;
+    color: var(--text-color2);
+    font: inherit;
+    margin-right: 10px;
+    cursor: pointer;
 }
