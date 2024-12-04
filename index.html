@@ -32,15 +32,25 @@
     <main>
         <section class="container-wrapper">
             <div class="wrapper">
-                <form class="search-form">
-                    <input id="todo-input" type="text" placeholder="write anything " autocomplete="off">
+                <div class="search-add-container">
+                    <form class="search-form">
+                        <input id="todo-input" type="text" placeholder="write anything " autocomplete="off">
+                    </form>
+                    <!--category-->
+                    <select id="category-dropdown" class="category-dropdown">
+                        <option value="all">All</option>
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="urgent">Chill</option>
+                    </select>
+
                     <button id="add-button">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 5v14M5 12h14"></path>
                         </svg>
                     </button>
-                </form>
+                </div>
                 <!-- Filter buttons -->
                 <div class="filter-buttons">
                     <button id="filter-all" class="filter-button">
