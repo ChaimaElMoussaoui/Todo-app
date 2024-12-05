@@ -50,11 +50,14 @@ function updateTodoList() {
     const todoList = document.getElementById('todo-list');
     todoList.innerHTML = '';
 
-    allTodos.forEach((todo, index) => {
-        const todoLI = createTodoElement(todo, index, todo.category ?? "UNKNOWN");
+
+    allTodos.slice().reverse().forEach((todo, index) => {
+        const reversedIndex = allTodos.length - 1 - index;
+        const todoLI = createTodoElement(todo, reversedIndex, todo.category ?? "UNKNOWN");
         todoList.appendChild(todoLI);
     });
 }
+
 
 
 function createTodoElement(todo, index, category) {
@@ -120,6 +123,7 @@ function deleteTodoItem(todoIndex) {
     });
 }
 
+
 function saveTodos() {
     const todosJson = JSON.stringify(allTodos);
     localStorage.setItem('todos', todosJson);
@@ -131,5 +135,7 @@ function getTodos() {
     console.log('Todos loaded:', todos);
     return JSON.parse(todos);
 }
+
+
 
 updateTodoList();
