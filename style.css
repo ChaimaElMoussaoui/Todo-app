@@ -3,10 +3,10 @@
 :root {
     --background: #ffffff;
     --text: #ffffff;
-    --primary-color: #5a048b;
-    --secondary-color: #eb04cc;
-    --hover-color: #02d3b0;
-    --accent-color: #eb04cc;
+    --primary-color: #ffd900;
+    --secondary-color: #02d3b0;
+    --hover-color: #eb04cc;
+    --accent-color: #5a048b;
     --text-color: #ffffff;
     --text-color2: #000000;
     --input-text-color: #000;
@@ -21,6 +21,10 @@
     --secondary-color: #02d3b0;
     --hover-color: #eb04cc;
     --accent-color: #5a048b;
+    --primary-color: #5a048b;
+    --secondary-color: #eb04cc;
+    --hover-color: #02d3b0;
+    --accent-color: #eb04cc;
     --text-color: #000000;
     --text-color2: #ffffff;
     --input-text-color: #fff;
@@ -197,6 +201,7 @@ form {
     color: var(--text-color2);
     text-align: center;
 }
+
 
 .search-add-container {
     display: flex;
