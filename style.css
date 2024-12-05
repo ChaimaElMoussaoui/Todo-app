@@ -21,6 +21,7 @@
     --secondary-color: #02d3b0;
     --hover-color: #eb04cc;
     --accent-color: #5a048b;
+    --text-color: #000000;
     --text-color2: #ffffff;
     --input-text-color: #fff;
 
@@ -322,7 +323,7 @@ input[type="checkbox"] {
 footer {
     padding: 10px;
     background-color: var(--primary-color);
-    color: var(--text-color2);
+    color: var(--text-color);
     text-align: center;
     font-size: 0.8rem;
 }
