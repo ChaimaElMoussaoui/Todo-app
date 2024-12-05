@@ -127,6 +127,7 @@ img {
     background-color: var(--background);
     color: var(--text-color2);
     border-radius: 20px;
+    border: 2px solid var(--accent-color);
     border-color: var(--secondary-color);
     height: 40px;
 
